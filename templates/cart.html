@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}
+    <title>購物車</title>
+{% endblock %}
+{% block content %}
+    {% if 'username' in request.session %}
+        <br>
+        <div id="maindiv">
+        <form action="/addcart/update/" method="post">
+        {% csrf_token %}
+        <p id="infoTitle">購買清單</p>
+        <table id="table">
+            <tr>
+             <th width="100" align="center" bgcolor="#ffe4c4"><strong>取消</strong></th>
+             <th  bgcolor="#ffe4c4"><strong>商品名稱</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>單價</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>數量</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>金額</strong></th>
+            </tr>
+         {% for unit in cartlist1 %}
+            <tr>
+             <td bgcolor="#f0ffff"><a href="/addcart/remove/{{forloop.counter0}}" onClick="confirmLink('您確定要刪除這個商品嗎？'); return document.returnValue">刪除</a></td>
+             <td width="300" align="left" bgcolor="#f0ffff">{{unit.0}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff">$ {{unit.2}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff">{{unit.3}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff"><strong>$ {{unit.4}}</strong></td>
+            </tr>
+            {% endfor %}
+            <tr>
+             <td colspan="4" align="left"><strong>小計</strong></td>
+             <td align="left"> $ {{total}}</td>
+            </tr>
+            <tr>
+             <td colspan="4" align="left"><strong>運費</strong> (固定60元) </td>
+             <td width="100" align="left">$ 60</td>
+            </tr>
+            <tr>
+             <td colspan="4" ><strong>總計</strong></td>
+             <td align="left"><strong><font color="#FF0000">$ {{grandtotal}}</font></strong></td>
+            </tr>
+        </table>
+        <table border="0" align="center" cellpadding="10" cellspacing="0">
+            <tr>
+             <td><input type="button" name="Continue" onclick="window.location='/product/'" value="繼續購物" /></td>
+             <td><input name="Empty" type="button" onclick="window.location='/addcart/empty/'" value="清空購物車" /></td>
+             <td><input name="Order" type="button" onclick="window.location='/order/'"  value="我要結帳" /></td>
+            </tr>
+        </table>
+        </form>
+        <span style="color: red; text-align: center;margin-left: 35%">{{ Message }}</span>
+    </div>
+    {% else %}
+        <div id="log">
+        <div>您尚未登入會員!</div>
+        <div><input type="submit" class="btn btn-outline-secondary" onclick="window.location='/login/'" value="前往登入頁面"></div>
+        </div>
+    {% endif %}
+{% endblock %}

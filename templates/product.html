@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}
+    <title>白熊園藝產品</title>
+{% endblock %}
+{% block content %}
+    <div class="container-xl p-3 my-3 border">
+        <h2>產品介紹</h2>
+        <p>您想找的網路人氣推薦觀賞花卉商品就在這裡！買觀賞花卉立即上商品專區享超低折扣優惠與運費補助，搭配賣家評價安心網購超簡單！</p>
+        <p>Note:本公司產品以官網公告價格為準，購買前請先查看官網定價，謝謝!</p>
+        <!-- 卡片欄 -->
+        <div class="card-columns">
+            <!-- 卡片 含圖-->
+            {% for product in productall %}
+            <div class="card">
+                <img class="card-img-top" src="/static/image/{{ product.p_image }}" alt="Card image" height="80%" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ product.p_name }}</h4>
+                    <p class="card-text"> 單價: {{ product.p_price }} 元</p>
+                    <br>
+                    <p class="card-text">{{ product.p_description }}</p>
+                    <a href="/addcart/add/{{ product.id }}" class="btn btn-primary" onclick="alert('{{ product.p_name }} 已加入購物車')">加入購物車</a>
+                </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

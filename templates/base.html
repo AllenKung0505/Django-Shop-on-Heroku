@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} {% endblock %}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="javascript:void(0)">ก็ʕ•͡ᴥ•ʔก้</a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navb" style="">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <button class="btn btn-primary" onclick="location.href='/about/'" id="btn">關於我們</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-primary" onclick="location.href='/product/'" id="btn">產品介紹</button>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search"> -->
+            <button class="btn btn-success my-2 my-sm-0" type="button" onclick="location.href='/cart/'" id="btn">購物車</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search"> -->
+            <button class="btn btn-success my-2 my-sm-0" type="button" onclick="location.href='/login/'" id="btn">會員登入</button>
+          </form>
+          </div>
+      </nav>
+      <br>
+    <div style="padding: 20px;">
+      {%  block content %} {% endblock %}
+    </div>
+<footer>
+    <p>Copyright</p>
+    <p>٩(๑❛ᴗ❛๑)۶</p>
+</footer>
+
+</body>
+</html>

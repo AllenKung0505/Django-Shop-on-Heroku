@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}
+    <title>關於我們</title>
+{% endblock %}
+{% block content %}
+    <br>
+        <div class="card-columns">
+            <!-- 卡片 含圖-->
+            <div class="card">
+                <img class="card-img-top" src="{%static "image/me.jpg"%}" alt="Card image" height="80%" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">執行長</h4>
+                    <p class="card-text">龔峻德先生為本公司創始人之一，憑藉著高遠的眼界創立了本公司，對產業的影響力無遠弗屆，其為人...</p>
+                    <a href="#" class="btn btn-primary">了解詳情</a>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

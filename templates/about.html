@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}
+    <title>關於我們</title>
+{% endblock %}
+{% block content %}
+    <div class="container-xl p-3 my-3 border">
+        <h1 class="text-info">My Profile</h1>
+        <br>
+        <img src="/static/image/me.jpg" class="img-thumbnail" alt="Cinque Terre" width="25%" height="25%" style="float: left">
+        <div style="padding-left: 300px">
+        <p id="infoTitle" style="font-size: 40px"> 龔峻德</p>
+        <h4> 1998/05/05</h4>
+        <h4> 國立中正大學機械工程學系</h4>
+        <h4> 興趣: 植栽、手動勞作</h4>
+        <h5>GitHub: <a href="https://github.com/AllenKung0505">https://github.com/AllenKung0505</a></h5>
+        <br>
+        <button data-toggle="collapse" data-target="#demo">聯絡方式</button>
+        <div id="demo" class="collapse">
+            通訊地址:台北市士林區<br>
+            Gmail: kung10141@gmail.com<br>
+            連絡電話:0800-000-000<br>
+        </div>
+        </div>
+    </div>
+{% endblock %}

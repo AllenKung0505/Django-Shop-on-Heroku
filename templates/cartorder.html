@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}
+    <title>購物車</title>
+{% endblock %}
+{% block content %}
+    {% if 'username' in request.session %}
+        <br>
+        <div id="maindiv">
+        <form action="/buy/" method="post">
+        {% csrf_token %}
+        <p id="infoTitle">購買清單</p>
+        <table id="table">
+            <tr>
+             <th width="100" align="center" bgcolor="#ffe4c4"><strong>取消</strong></th>
+             <th  bgcolor="#ffe4c4"><strong>商品名稱</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>單價</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>數量</strong></th>
+             <th width="100" bgcolor="#ffe4c4"><strong>金額</strong></th>
+            </tr>
+         {% for unit in cartlist1 %}
+            <tr>
+             <td bgcolor="#f0ffff"></td>
+             <td width="300" align="left" bgcolor="#f0ffff">{{unit.0}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff">$ {{unit.2}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff">{{unit.3}}</td>
+             <td width="100" align="left" bgcolor="#f0ffff"><strong>$ {{unit.4}}</strong></td>
+            </tr>
+            {% endfor %}
+            <tr>
+             <td colspan="4" align="left"><strong>小計</strong></td>
+             <td align="left"> $ {{total}}</td>
+            </tr>
+            <tr>
+             <td colspan="4" align="left"><strong>運費</strong> (固定60元) </td>
+             <td width="100" align="left">$ 60</td>
+            </tr>
+            <tr>
+             <td colspan="4" ><strong>總計</strong></td>
+             <td align="left"><strong><font color="#FF0000">$ {{grandtotal}}</font></strong></td>
+            </tr>
+        </table>
+        <hr>
+        <p id="infoTitle">客戶資訊</p>
+      <table id="customerinfo">
+        <tr>
+          <td width="100" align="center"><strong>姓名</strong></td>
+          <td><input type="text" name="CustomerName" class="userinput" value="{{customname1}}" required/></td>
+        </tr>
+        <tr>
+          <td width="100" align="center"><strong>聯絡電話</strong></td>
+          <td><input type="text" name="CustomerPhone" class="userinput" size="40" value="{{customphone1}}" required/></td>
+        </tr>
+        <tr>
+          <td align="center"><strong>住址</strong></td>
+          <td><input type="text" name="CustomerAddress" class="userinput" size="40" value="{{customaddress1}}" required/></td>
+        </tr>
+      </table>
+      <div style="clear:both"></div>
+      <table border="0" align="center" cellpadding="10" cellspacing="0">
+        <tr>
+          <td><input type="button" name="button1" value="繼續購物" onclick="window.location='/product/'" /></td>
+          <td><input type="button" name="button2" value="修改購物車內容" onclick="window.location='/cart/'" /></td>
+          {% if information == 'correct' %}
+            <td><input type="submit" name="Submit" value="確認購買" onclick="alert('感謝您的購買! 商品將於五天後送達')" /></td>
+          {% else %}
+            <td><input type="submit" name="Submit" value="確認購買" onclick="alert('請填寫完整客戶資訊，謝謝')" /></td>
+          {% endif %}
+        </tr>
+      </table>
+      </form>
+    </div>
+    {% else %}
+        <div id="log">
+        <div>您尚未登入會員!</div>
+        <div><input type="submit" class="btn btn-outline-secondary" onclick="window.location='/login/'" value="前往登入頁面"></div>
+        </div>
+    {% endif %}
+{% endblock %}

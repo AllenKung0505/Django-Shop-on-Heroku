@@ -1,0 +1,58 @@
+
+#log{
+    width: 400px;
+    height: 230px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 300px;
+    padding-top: 50px;
+
+
+}
+
+#btn{
+    margin: 0px 15px 5px 5px;
+}
+
+#table{
+    width: 90%;
+    border: 0;
+    align: center;
+    border-collapse: separate;
+    margin-left: 5%;
+
+}
+
+#table td{
+    border-spacing: 5px;
+}
+
+#infoTitle{
+    font-size: 120%;
+    color: #EEEEEE;
+    background-color: #666666;
+    padding: 3px;
+    padding-left: 15px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#customerinfo{
+    background-color: #c5c2e2;
+    width: auto;
+    margin-left: 25%;
+
+
+}
+
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0px 5px;
+    margin-top: 60px;
+}
+
