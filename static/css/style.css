@@ -1,15 +1,19 @@
 
 #log{
-    width: 400px;
+    width: 40%;
     height: 230px;
     border-width: 3px;
     border-style: solid;
     border-radius: 5px;
     text-align: center;
-    margin-left: 300px;
+    margin-left: 30%;
     padding-top: 50px;
 
 
+}
+
+#log input{
+    width: 35%;
 }
 
 #btn{
