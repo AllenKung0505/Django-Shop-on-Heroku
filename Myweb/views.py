@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from  Myweb import models
+from django.contrib import messages
 
 cartlist = []
 customname = ''
@@ -51,6 +52,12 @@ def product(request):   # 按'產品介紹'
         cartlist = []
     productall = models.Product.objects.all()
     cartnum = len(cartlist)
+
+    if 'username' in request.session:   # 若username這個session存在
+        status = 'login'   # 狀態為'login'，可順利加入購物車
+    else:
+        status = ''
+
     return render(request,'product.html',locals())
 
 def about(request):   # 按'關於我們'
@@ -65,9 +72,10 @@ def showcart(request):   # 按'購物車'
     grandtotal = total + 60  # 須加上運費60元
     return render(request,'cart.html',locals())
 
-def addcart(request,ctype = None,productid = None):  # 按'加入購物車'
+def addcart(request,ctype = None,productid = None):  # 加入購物車、移除項目、清空購物車'
     global cartlist
-    if ctype == 'add':  # 加入購物車
+
+    if ctype == 'add':  # 按'加入購物車'
         product = models.Product.objects.get(id = productid)
         check = True
         for unit in cartlist:
@@ -125,15 +133,12 @@ def buy(request):  # 按'確認購買'
     customphone = request.POST.get('CustomerAddress','')
     customname1 = customname
 
-    if not customname or not customaddress or not customphone:
-        information = 'correct'
-    else:
-        information = ''
-
     unitorder = models.Order.objects.create(o_customname=customname, o_customphone=customphone, o_customaddress=customaddress, o_subtotal=total, o_shipping=60, o_grandtotal=grandtotal)
     for unit in cartlist:
         total = int(unit[2]) * int(unit[3])
         unitdetail = models.Detail.objects.create(d_order=unitorder, d_product=unit[0], d_unitprice=unit[2], d_quantity=unit[3], d_total=total)
     cartlist = []
     request.session['cartlist'] = cartlist
-    return render(request,'cartorder.html',locals())
+    total = 0
+    grandtotal =60
+    return render(request,'cart.html',locals())

@@ -46,9 +46,23 @@
 
 #customerinfo{
     background-color: #c5c2e2;
-    width: auto;
+    min-width: 80%;
+    width: 400px;
     margin-left: 25%;
+}
 
+#customerinfo input{
+
+}
+
+#profile image{
+
+
+}
+
+#profile_text{
+    padding-left: 30%;
+    min-width: 50%;
 
 }
 

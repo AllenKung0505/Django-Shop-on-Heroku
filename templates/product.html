@@ -19,7 +19,11 @@
                     <p class="card-text"> 單價: {{ product.p_price }} 元</p>
                     <br>
                     <p class="card-text">{{ product.p_description }}</p>
-                    <a href="/addcart/add/{{ product.id }}" class="btn btn-primary" onclick="alert('{{ product.p_name }} 已加入購物車')">加入購物車</a>
+                    {% if status == 'login' %}
+                        <a href="/addcart/add/{{ product.id }}" class="btn btn-primary" onclick="alert('{{ product.p_name }} 已加入購物車')">加入購物車</a>
+                    {% else %}
+                        <a href="/login" class="btn btn-primary" onclick="alert('商品加入購物車前，前先登入會員，謝謝')">加入購物車</a>
+                    {% endif %}
                 </div>
                 </div>
 
