@@ -2,12 +2,13 @@
 {% load static%}
 {% block title %}
     <title>購物車</title>
+    <script src="{%static 'javascript/orderCheck.js'%}"></script>
 {% endblock %}
 {% block content %}
     {% if 'username' in request.session %}
         <br>
         <div id="maindiv">
-        <form action="/buy/" method="post">
+        <form action="/buy/" method="post" name="buy" onsubmit="return chk();">
         {% csrf_token %}
         <p id="infoTitle">購買清單</p>
         <table id="table">
@@ -45,15 +46,15 @@
       <table id="customerinfo">
         <tr>
           <td width="100" align="center"><strong>姓名</strong></td>
-          <td><input type="text" name="CustomerName" class="userinput" value="{{customname1}}" required/></td>
+          <td><input type="text" name="CustomerName" class="userinput" value="{{customname1}}"/></td>
         </tr>
         <tr>
           <td width="100" align="center"><strong>聯絡電話</strong></td>
-          <td><input type="text" name="CustomerPhone" class="userinput" size="40" value="{{customphone1}}" required/></td>
+          <td><input type="text" name="CustomerPhone" class="userinput" size="40" value="{{customphone1}}"/></td>
         </tr>
         <tr>
           <td align="center"><strong>住址</strong></td>
-          <td><input type="text" name="CustomerAddress" class="userinput" size="40" value="{{customaddress1}}" required/></td>
+          <td><input type="text" name="CustomerAddress" class="userinput" size="40" value="{{customaddress1}}"/></td>
         </tr>
       </table>
       <div style="clear:both"></div>

@@ -78,7 +78,7 @@ def addcart(request,ctype = None,productid = None):  # 加入購物車、移除�
     if ctype == 'add':  # 按'加入購物車'
         product = models.Product.objects.get(id = productid)
         check = True
-        for unit in cartlist:
+        for unit in cartlist:    # 檢查購物車中是否有同樣商品
             if product.p_name == unit[0]:  # 若購物車中已有同樣商品
                 unit[3] = str(int(unit[3])+1)  # 商品數量加一
                 unit[4] = str(int(unit[4]) + product.p_price)  # 計算總價
